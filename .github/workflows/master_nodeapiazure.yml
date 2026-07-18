@@ -8,8 +8,10 @@ on:
     branches: [master]
 
 env:
-  AZURE_WEBAPP_NAME: nodeapiazure-gmdzhkb6gkhdc3gr.canadacentral-01
-  NODE_VERSION: '20.x'
+
+  AZURE_WEBAPP_NAME: NodeApiAzure
+  NODE_VERSION: '24.x'
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   # Build and test job runs on every push and PR
@@ -62,6 +64,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: deploy.zip
 
