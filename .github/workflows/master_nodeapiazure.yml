@@ -12,7 +12,7 @@ env:
   AZURE_WEBAPP_NAME: NodeApiAzure
   NODE_VERSION: '24.x'
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
-
+  AZURE_WEBAPP_NAME_URI: nodeapiazure-gmdzhkb6gkhdc3gr.canadacentral-01
 jobs:
   # Build and test job runs on every push and PR
   build-and-test:
@@ -71,5 +71,5 @@ jobs:
       - name: Verify deployment
         run: |
           sleep 30
-          curl -f https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net/health || exit 1
+          curl -f https://${{ env.AZURE_WEBAPP_NAME_URI }}.azurewebsites.net/health || exit 1
           echo "Deployment verified successfully"
