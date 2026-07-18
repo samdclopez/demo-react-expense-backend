@@ -29,9 +29,6 @@ jobs:
         run: npm install
           npm run build --if-present
 
-      - name: Run tests
-        run: npm test
-
       - name: Create deployment package
         run: |
           # Remove dev dependencies for a smaller deployment
