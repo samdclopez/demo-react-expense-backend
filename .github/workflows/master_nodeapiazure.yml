@@ -9,7 +9,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: nodeapiazure-gmdzhkb6gkhdc3gr.canadacentral-01
-  NODE_VERSION: '24.x'
+  NODE_VERSION: '20.x'
 
 jobs:
   # Build and test job runs on every push and PR
