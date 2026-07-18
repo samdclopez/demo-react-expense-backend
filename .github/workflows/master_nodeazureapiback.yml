@@ -30,7 +30,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci --omit=dev
           npm run build --if-present
 
       - name: Create deployment package
@@ -62,5 +62,5 @@ jobs:
         with:
           app-name: 'nodeazureapiback'
           slot-name: 'Production'
-          package: .
+          package: deploy.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B43D4CE67F66462FA0B8BE01011F79A0 }}
