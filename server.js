@@ -21,20 +21,27 @@ app.get("/", (req, res) => {
     res.status(200).send("Expense Tracker API is running");
 });
 
+// Azure App Service supplies PORT. Do not set a fixed production port.
+const PORT = process.env.PORT || 9090;
+app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+});
+
 // Routes
 app.use('/api/expenses', expenseRoutes);
 
 // Error Handler
 app.use(errorHandler);
 
-const startServer = async () => {
-    await connectDB();
+// const startServer = async () => {
+//     await connectDB();
 
-    // Azure App Service supplies PORT. Do not set a fixed production port.
-    const PORT = process.env.PORT || 9090;
-    app.listen(PORT, () => {
-        console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-    });
-};
+    
+// };
 
-startServer();
+// startServer();
+connectDB().then(() => {
+    console.log('Connected to MongoDB');
+}).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+});
