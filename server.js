@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 // Keep this endpoint independent of MongoDB so Azure App Service can verify
 // that the Node process is running.
 app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok' });
+    res.status(200).json({ status: `OK -Server running in ${process.env.MONGODB_URI } mode` });
 });
 
 app.get("/", (req, res) => {
